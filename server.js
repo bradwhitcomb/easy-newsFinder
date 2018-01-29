@@ -5,10 +5,23 @@ const request = require("request");
 
 const axios = require("axios");
 
-const db = require("./models");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+
+const mongoose = require("mongoose");
 const PORT = 8080;
+const db = require("./models");
+
 const app = express();
 
+app.use(logger("dev"));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static("public"));
+
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost/cycleNews",{
+	useMongoClient: true
+});
 
 
 app.get("/retrieve",function(req,res){
@@ -18,7 +31,8 @@ app.get("/retrieve",function(req,res){
 		$("h3.article__title").each(function(i, element){
 			const result = {};
 			result.title = $(this)
-				.text();
+				.text().trim();
+
 			result.link = $(this)
 				.children()
 				.attr("href");	
@@ -36,9 +50,16 @@ app.get("/retrieve",function(req,res){
 		});
 	});
 
+app.get("/articles", function(req,res){
+	db.Article.find({})
+	.then(function(dbArticle){
+		res.json(dbArticle);
+	})
+	.catch(function(err){
+		res.json(err)
 
-
-
+	});	
+});
 
 
 
