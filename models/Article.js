@@ -14,8 +14,10 @@ const ArticleSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Note"
 	}
+}, 
+{ timestamps: { createdAt: 'created_at' }
 });
 
 const Article = mongoose.model("Article",ArticleSchema);
 
-module.exports = Article;
+module.exports = Article
