@@ -1,8 +1,8 @@
-
+"use strict";
 const express = require("express");
 const cheerio = require("cheerio");
 const request = require("request");
-
+require("dotenv").config();
 const axios = require("axios");
 
 const bodyParser = require("body-parser");
@@ -18,10 +18,11 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
 
+
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost.mongo/cycleNews5"
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/cycleNews5",{
-	useMongoClient: true
-});
+mongoose.connect(MONGODB_URI);
 
 
 app.get("/retrieve",function(req,res){
@@ -53,7 +54,7 @@ app.get("/retrieve",function(req,res){
 				});
 			
 			});
-		res.send("Retrieval Conplete")
+		res.send("Retrieval Complete")
 		});
 	});
 
