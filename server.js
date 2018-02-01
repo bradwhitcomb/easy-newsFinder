@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost.mongo/cycleNews5"
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {useMongoClient:true});
 
 
 app.get("/retrieve",function(req,res){
