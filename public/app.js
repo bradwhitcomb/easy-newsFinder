@@ -1,5 +1,7 @@
 
 
+
+
 $.getJSON("/articles", function(data) {
 	//db.cycleNews1.drop();
 	//$("#articles").empty();

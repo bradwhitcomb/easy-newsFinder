@@ -1,12 +1,15 @@
 body { 
-	background-color: yellow; }
-h1 {color: yellow;}	
-a {
-    color:red;
-    font:bold;
-    font-size: 125%;
-}
-
+	     background-color: yellow; }
+h1   {
+       color: yellow;}	
+a   {
+      color:red;
+      font:bold;
+      font-size: 125%;
+    }
+h3 {
+      color: white;
+      }
 	 
 #articles {
         display: inline-block;
@@ -19,29 +22,35 @@ a {
       }
 #notes {
         float: right;
-        width: 40%;
+        width: 22%;
         background-color: red;
+        border-style: solid;
+        border-color: yellow;
         
       }
 
 
-.container {background-image: url(http://i.dailymail.co.uk/i/pix/2017/07/24/13/42A2BEDE00000578-4724722-image-a-29_1500897993998.jpg);
+.container {
+        background-image: url(http://i.dailymail.co.uk/i/pix/2017/07/24/13/42A2BEDE00000578-4724722-image-a-29_1500897993998.jpg);
+        margin-top: 15px;
 	
-	background-repeat: no-repeat;
-}
+	     background-repeat: no-repeat;
+       width: 1250px;
+      }
 
 textarea, input {
         display: block;
         width: 100%;
-        background-color: #FCF5C7;
+        background-color: black;
+        color:white;
       }
       input {
         height: 36px;
-        font-size: 24px;
+        font-size: 20px;
       }
       textarea {
         height: 200px;
-        font-size: 18px;
+        font-size: 16px;
       }
 
 

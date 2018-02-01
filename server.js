@@ -19,13 +19,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/cycleNews",{
+mongoose.connect("mongodb://localhost/cycleNews5",{
 	useMongoClient: true
 });
 
 
 app.get("/retrieve",function(req,res){
-	axios.get("http://www.velonews.com/category/news/").then(function(response) {
+	axios.get("http://www.velonews.com/category/news/")
+	.then(function(response) {
+		
 		const $ = cheerio.load(response.data);
 		
 		$("h3.article__title").each(function(i, element){
@@ -40,16 +42,20 @@ app.get("/retrieve",function(req,res){
 			
 			db.Article.create(result)
 				.then(function(dbArticle){
+					console.log("==========================")
 					console.log(dbArticle);
 				})
 				.catch(function(err){
-					return res.json(err);
+					console.log("==========================")
+					console.log(err.message);
+					// return res.json(err);
 				});
 			
 			});
 		res.send("Retrieval Complete")
 		});
 	});
+
 
 app.get("/articles", function(req,res){
 	db.Article.find({}).sort({'created_at':-1})
