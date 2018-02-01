@@ -25,6 +25,7 @@ mongoose.connect("mongodb://localhost/cycleNews5",{
 
 
 app.get("/retrieve",function(req,res){
+	
 	axios.get("http://www.velonews.com/category/news/")
 	.then(function(response) {
 		
@@ -52,7 +53,7 @@ app.get("/retrieve",function(req,res){
 				});
 			
 			});
-		res.send("Retrieval Complete")
+		res.send("Retrieval Conplete")
 		});
 	});
 

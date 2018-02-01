@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
 	title: {
 		type: String,
-		required: true,
+		unique: true,
+		required: true
 	},
 	link: {
 		type: String,
@@ -18,6 +19,6 @@ const ArticleSchema = new Schema({
 { timestamps: { createdAt: 'created_at' }
 });
 
-const Article = mongoose.model("Article",ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article
