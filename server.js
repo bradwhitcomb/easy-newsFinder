@@ -20,9 +20,15 @@ app.use(express.static("public"));
 
 
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost.mongo/cycleNews5"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost.mongo/cycleNews3"
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {useMongoClient:true});
+
+// mongoose.Promise = Promise;
+// mongoose.connect("mongodb://cycleNews5", {
+//   useMongoClient: true
+// });
+
 
 
 app.get("/retrieve",function(req,res){
@@ -87,7 +93,7 @@ app.post("/articles/:id",function(req, res){
 	db.Note.create(req.body)
 		.then(function(dbNote){
 			console.log(dbNote);
-			noteId = dbNote._id;
+			//noteId = dbNote._id;
 			return db.Article.findOneAndUpdate({_id: req.params.id}, { note: dbNote._id}, {new: true});
 		})
 	.then(function(dbArticle){

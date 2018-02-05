@@ -33,7 +33,7 @@ h3 {
 .container {
         background-image: url(http://i.dailymail.co.uk/i/pix/2017/07/24/13/42A2BEDE00000578-4724722-image-a-29_1500897993998.jpg);
         margin-top: 15px;
-	
+	      margin-left: 15px; 
 	     background-repeat: no-repeat;
        width: 1250px;
       }
