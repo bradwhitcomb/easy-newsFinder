@@ -60,7 +60,7 @@ app.get("/retrieve",function(req,res){
 				});
 			
 			});
-		res.send("Retrieval Complete")
+		res.redirect("/")
 		});
 	});
 
